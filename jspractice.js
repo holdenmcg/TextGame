@@ -12,7 +12,7 @@ var pushedButton;
 sceneToArray.set('openingScene.txt', ['North Door', 'East Door', 'South Door', 'West Door']);
 sceneToArray.set('North Door.txt', ['Strange Chamber', 'Long Hallway']);
 sceneToArray.set('Strange Chamber.txt', ['Console', 'Window', 'Storage']);
-sceneToArra.set('Console.txt', ['Exit', 'Unlock']);
+sceneToArray.set('Console.txt', ['Exit', 'Unlock']);
 console.log(sceneToArray);
 function clickFunction(elementID){
    //Set the display area, get the index of the scene array based on which button was pressed,
@@ -20,23 +20,23 @@ function clickFunction(elementID){
     var displayArea = document.getElementById('displayArea');
     arrayIndex = document.getElementById(elementID).id.slice(-1); //Determines which button got pressed.
     console.log(arrayIndex);
-    if(firstParse){
-        displayAreaSrc = displayArea.src.replace(/^.*[\\\/]/, '');
-        firstParse = false;
-    } else {
+//    if(firstparse){
+//        displayareasrc = displayarea.src.replace(/^.*[\\\/]/, '');
+//        firstparse = false;
+//    }  
         displayAreaSrc = document.getElementById(elementID).name;
-    }
+    
 
     
-    console.log(displayAreaSrc);
+    console.log("new source, aka button just clicked, = " + displayAreaSrc);
     sceneArray = sceneToArray.get(displayAreaSrc);//CHANIGING, POSSIBLE ERROR
     console.log(sceneArray);
-    displayArea.src = sceneArray[arrayIndex] + '.txt';
-    console.log(sceneArray[arrayIndex] + '.txt');
+    displayArea.src = displayAreaSrc;//sceneArray[arrayIndex] + '.txt';
+    console.log("Accessing area: " + displayAreaSrc);
 
      //TODO: Iterate through buttons and set up new ones
 
-     sceneArray = sceneToArray.get(sceneArray[arrayIndex] + '.txt');
+     sceneArray = sceneToArray.get(displayAreaSrc);
      for(var i = 0; i < sceneArray.length; i++){
         console.log(sceneArray.length);
         buttonID = buttonString + '' + i;
